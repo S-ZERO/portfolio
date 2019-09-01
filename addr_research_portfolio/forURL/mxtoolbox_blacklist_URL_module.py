@@ -53,10 +53,6 @@ def main_move(def_ip,driver):
     except TimeoutException:
         print("timeout")
         return "timeout" ,100
-        
-    # except UnexpectedAlertPresentException:
-    #     print("mxtoolboxの妨害")
-    #     Alert(driver).accept()
 
     except NoSuchElementException:
         print("要素が見つかりません")

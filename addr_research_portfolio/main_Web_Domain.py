@@ -1,13 +1,29 @@
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 
-import re
+from time import sleep
+import os, argparse, csv
 
-import openpyxl
-from openpyxl import load_workbook
+from bs4 import BeautifulSoup
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from requests.exceptions import Timeout
+
+from selenium.webdriver.common.alert import Alert
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import UnexpectedAlertPresentException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
 
 from common import aguse_reserach_module as aguse
 from forURL import mxtoolbox_blacklist_URL_module as mxtoolbox
 from forURL import owner_search_URL_module as ownerURL
+
+#import pandas as pd
+import openpyxl
+from openpyxl import load_workbook
 
 search = []
 
@@ -20,7 +36,7 @@ xforce_time = []
 xforce_risk = []
 xforce_URL = []
 
-#結果出力とエクセルの見栄え設定(ヘッダーの色、枠線)
+#結果エクセルの見栄え設定(ヘッダーの色、枠線)
 def all_result_writer(write_result_list, col_num, target_wb):
     headers = ["IP", "aguse", "mxtoolbox", "owner"]
     fill = openpyxl.styles.fills.PatternFill(patternType='solid', fgColor='228B22', bgColor='228B22')
@@ -43,8 +59,7 @@ def all_result_writer(write_result_list, col_num, target_wb):
     
     wb.save(r"C:\addr_research_portfolio\result\result_URL.xlsx")
 
-# ここからメイン動作
-driver = webdriver.Chrome(r'C:\addr_research_portfolio\common\chromedriver.exe') 
+driver = webdriver.Chrome(r'C:\addr_research_portfolio\result\chromedriver.exe') 
 
 print("読み込ませるファイルを選択")
 target_file = input(">> ")
@@ -63,16 +78,10 @@ for url in search:
     print(aguse_results)
     
     #------mxtoolboxの処理--------------------------------
-    for roop in range(0,5):#ループが6まである理由は、aguseの妨害処理に1ループ無駄にするかもしれないから
-        domain = url
-        if "https://" in domain or "http://" in domain:
-            domain = re.sub('http*://', "", domain)
-        if "/" in domain:
-            domain = re.sub('/[a-z]*|[A-Z]*|[0-9]*', "", domain)
-        print(domain)
-        mxtoolbox_result = mxtoolbox.main_move(domain,driver)
-        if not mxtoolbox_result == None and int(mxtoolbox_result[1]) < 5:
-            break
+    for roop in range(0,6):#ループが6まである理由は、aguseの妨害処理に1ループ無駄にするかもしれないから
+       mxtoolbox_result = mxtoolbox.main_move(url,driver)
+       if not mxtoolbox_result == None and int(mxtoolbox_result[1]) < 5:
+           break
     mxtoolbox_results.append(mxtoolbox_result[0])
     print(mxtoolbox_results)
     

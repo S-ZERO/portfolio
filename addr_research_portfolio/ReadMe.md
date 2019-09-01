@@ -1,10 +1,8 @@
 # 利用方法(Windows)
 
-## ダウンロード先
+## 事前準備
 
-C直下に`addr_research_portfolio`フォルダをダウンロード
-
-
+`first.bat`を実行する
 
 ## IPアドレスの危険度を調査したい場合
 
@@ -16,7 +14,7 @@ C直下に`addr_research_portfolio`フォルダをダウンロード
 
 ## URLの危険度を調査したい場合
 
-1. `test_researchURL.txt`と同じ形式で検索したいURLの一覧をテキストデータで作成
+1. `url.txt`と同じ形式で検索したいURLの一覧をテキストデータで作成
 2. コマンドプロンプトなどで`main_Web_URL.py`を実行し、作成したテキストデータをドラック&ドロップ
 3. `Enter`を押下すると、結果が`result`フォルダに出力される
 

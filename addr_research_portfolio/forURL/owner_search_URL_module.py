@@ -40,9 +40,6 @@ def main_move(def_url,driver):
             print("アクセスが制限された可能性があるため、5分間停止します")
             sleep(300)
             return "Web接続制限"
-            
-        def_soup = BeautifulSoup(def_source, "html.parser")
-        sleep(1)
 
         def_pg_title = driver.find_element_by_xpath('/html/body/table/tbody/tr[2]/td[2]')
         print(def_pg_title.text)

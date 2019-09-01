@@ -38,29 +38,29 @@ def main_move(def_ip,driver):
         )
         
         def_source = driver.page_source
-        if def_source == None:
-            print("Webページが取得できませんでした")
-            print("アクセスが制限された可能性があるため、5分間停止します")
-            sleep(300)
-            return "Web接続制限"
-            
         def_soup = BeautifulSoup(def_source, "html.parser")
         
         #検索結果画面のhtmlより、<div class=tool-result-body>~</div>で囲まれた部分をリスト型で抽出
         div_tool_result_body = def_soup.select('div.tool-result-body')
         
         strongs = div_tool_result_body[0].select('strong')
-        strong = strongs[2].text
-        timeout = strongs[3].text
+        strong = strongs[3].text
+        timeout = strongs[4].text
         print("リスト："+strong+"　タイムアウト："+timeout)
         
         return strong ,timeout
         
     except TimeoutException:
         print("timeout")
+        return "timeout" ,100
+        
+    # except UnexpectedAlertPresentException:
+    #     print("mxtoolboxの妨害")
+    #     Alert(driver).accept()
 
     except NoSuchElementException:
         print("要素が見つかりません")
+        return "no result" ,100
         
     except NoSuchElementException:
         try:

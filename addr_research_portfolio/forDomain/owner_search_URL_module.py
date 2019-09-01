@@ -17,26 +17,23 @@ from selenium.common.exceptions import UnexpectedAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 
-def main_move(def_ip,driver):
+def main_move(def_url,driver):
     try:
-        #seleniumでブラックリスト検索画面に移行
-        driver.get('https://mxtoolbox.com/blacklists.aspx')
+        driver.get('http://tshinobu.com/lab/get-page-title/')
         sleep(1)
-
         #検索欄を選択
-        ib=driver.find_element_by_id('ctl00_ContentPlaceHolder1_ucToolhandler_txtToolInput')
-
+        ib=driver.find_element_by_xpath('/html/body/form/p[1]/textarea')
         #検索欄にIPアドレスを入力
-        ib.send_keys(def_ip)
+        ib.send_keys(def_url)
         sleep(1)
-
-        #検索開始ボタンを押下する
-        driver.find_element_by_id('ctl00_ContentPlaceHolder1_ucToolhandler_btnAction').click()
         
-        WebDriverWait(driver, 60).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "tool-result-body"))
+        #検索開始ボタンを押下する
+        driver.find_element_by_xpath('/html/body/form/p[3]/input').click()
+        WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr[2]/td[2]'))
         )
         
+        #検索結果画面のhtmlを取得(検索結果画面のhtmlはdriver.page_sourceで取得可能)
         def_source = driver.page_source
         if def_source == None:
             print("Webページが取得できませんでした")
@@ -45,22 +42,19 @@ def main_move(def_ip,driver):
             return "Web接続制限"
             
         def_soup = BeautifulSoup(def_source, "html.parser")
-        
-        #検索結果画面のhtmlより、<div class=tool-result-body>~</div>で囲まれた部分をリスト型で抽出
-        div_tool_result_body = def_soup.select('div.tool-result-body')
-        
-        strongs = div_tool_result_body[0].select('strong')
-        strong = strongs[2].text
-        timeout = strongs[3].text
-        print("リスト："+strong+"　タイムアウト："+timeout)
-        
-        return strong ,timeout
-        
+        sleep(1)
+
+        def_pg_title = driver.find_element_by_xpath('/html/body/table/tbody/tr[2]/td[2]')
+        print(def_pg_title.text)
+
+        return def_pg_title.text
+    
     except TimeoutException:
         print("timeout")
-
+        
     except NoSuchElementException:
-        print("要素が見つかりません")
+        print("no data")
+        return "no result"
         
     except NoSuchElementException:
         try:

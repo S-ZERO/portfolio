@@ -1,29 +1,11 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 
-from time import sleep
-import os, argparse, csv
-
-from bs4 import BeautifulSoup
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from requests.exceptions import Timeout
-
-from selenium.webdriver.common.alert import Alert
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import UnexpectedAlertPresentException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+import openpyxl
+from openpyxl import load_workbook
 
 from common import aguse_reserach_module as aguse
 from forIP import mxtoolbox_blacklist_module as mxtoolbox
 from forIP import owner_search_IP_module as ownerIP
-
-import pandas as pd
-import openpyxl
-from openpyxl import load_workbook
 
 search = []
 
