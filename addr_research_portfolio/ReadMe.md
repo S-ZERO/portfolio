@@ -2,7 +2,9 @@
 
 ## 事前準備
 1. Pythonをインストールしておく
+    url. https://www.python.org/downloads/
 2. Chromeをインストールしておく
+    url. https://www.google.com/intl/ja_jp/chrome/
 3. `first.bat`を実行する
 
 ## IPアドレスの危険度を調査したい場合
