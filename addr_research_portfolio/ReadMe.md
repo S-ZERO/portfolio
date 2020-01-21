@@ -8,8 +8,8 @@
 [Chrome](https://www.google.com/intl/ja_jp/chrome/) 
 4. Chrome driverを最新のものにする
 [Chrome driver](https://chromedriver.chromium.org/downloads)
-※最新にした場合は`common`フォルダ内の`chromedriver.exe`と入れ替える
-5. `first.bat`を実行する
+5. 最新にした場合は`common`フォルダ内の`chromedriver.exe`と入れ替える
+6. `first.bat`を実行する
 
 
 ## IPアドレスの危険度を調査したい場合
