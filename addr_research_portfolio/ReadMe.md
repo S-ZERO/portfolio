@@ -5,7 +5,9 @@
 2. Pythonをインストールしておく
 [Python](https://www.python.org/downloads/)
 3. Chromeをインストールしておく
-[Chrome](https://www.google.com/intl/ja_jp/chrome/)
+[Chrome](https://www.google.com/intl/ja_jp/chrome/) 
+5. Chrome driverを最新のものにする
+[Chrome driver](https://chromedriver.chromium.org/downloads)
 4. `first.bat`を実行する
 
 
