@@ -1,11 +1,12 @@
 # 利用方法(Windows)
 
 ## 事前準備
-1. Pythonをインストールしておく
+1.`addr_research_portfolio`フォルダをC直下に置く
+2. Pythonをインストールしておく
 [Python](https://www.python.org/downloads/)
-2. Chromeをインストールしておく
+3. Chromeをインストールしておく
 [Chrome](https://www.google.com/intl/ja_jp/chrome/)
-3. `first.bat`を実行する
+4. `first.bat`を実行する
 
 
 ## IPアドレスの危険度を調査したい場合
