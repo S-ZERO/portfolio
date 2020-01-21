@@ -8,7 +8,7 @@
 [Chrome](https://www.google.com/intl/ja_jp/chrome/) 
 1. Chrome driverを最新のものにする
 [Chrome driver](https://chromedriver.chromium.org/downloads)
-1. 最新にした場合は`common`フォルダ内の`chromedriver.exe`と入れ替える
+  1. 最新にした場合は`common`フォルダ内の`chromedriver.exe`と入れ替える
 1. `first.bat`を実行する
 
 
