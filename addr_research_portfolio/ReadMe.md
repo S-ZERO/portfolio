@@ -1,7 +1,7 @@
 # 利用方法(Windows)
 
 ## 事前準備
-1.`addr_research_portfolio`フォルダをC直下に置く
+1. `addr_research_portfolio`フォルダをC直下に置く
 2. Pythonをインストールしておく
 [Python](https://www.python.org/downloads/)
 3. Chromeをインストールしておく
